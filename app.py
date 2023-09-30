@@ -13,7 +13,7 @@ def home():
 @app.route("/predict",methods = ['POST'])
 def predict():
     float_features = [float(x) for x in request.form.values()]
-    features = [np.array(float_features)]
+    features = [np.array(float_features,dtype=float)]
     prediction = model.predict(features)
 
     return render_template("index.html",prediction_text = "The flower species is {}".format(prediction))
